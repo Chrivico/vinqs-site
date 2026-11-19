@@ -70,18 +70,18 @@ a:focus-visible{outline:2px solid #5eaaf7;outline-offset:3px}
 }
 
 
-/* gold dust: a few slow motes falling behind the content, swaying side to side like a light breeze */
+/* gold dust: a few slow motes rising behind the content, swaying side to side like a light breeze */
 .dust{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .dust i{
-  position:absolute;left:var(--l);top:-2%;width:var(--s);height:var(--s);border-radius:50%;
+  position:absolute;left:var(--l);top:102%;width:var(--s);height:var(--s);border-radius:50%;
   background:var(--c);box-shadow:0 0 calc(var(--s)*3) var(--c),0 0 calc(var(--s)*6) rgba(242,170,70,.25);filter:blur(var(--b));opacity:0;
-  animation:vq-dust-fall var(--d) linear var(--dl) infinite,vq-dust-sway var(--sw) ease-in-out var(--sdl) infinite alternate;
+  animation:vq-dust-rise var(--d) linear var(--dl) infinite,vq-dust-sway var(--sw) ease-in-out var(--sdl) infinite alternate;
 }
-@keyframes vq-dust-fall{
-  0%{top:-2%;opacity:0}
+@keyframes vq-dust-rise{
+  0%{top:102%;opacity:0}
   10%{opacity:var(--o)}
   90%{opacity:var(--o)}
-  100%{top:102%;opacity:0}
+  100%{top:-2%;opacity:0}
 }
 @keyframes vq-dust-sway{
   0%{translate:calc(var(--dx) * -1) -6px}
