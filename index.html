@@ -70,22 +70,23 @@ a:focus-visible{outline:2px solid #5eaaf7;outline-offset:3px}
 }
 
 
-/* gold dust: a few slow motes drifting up behind the content */
+/* gold dust: a few slow motes falling behind the content, swaying side to side like a light breeze */
 .dust{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .dust i{
-  position:absolute;left:var(--l);top:100%;width:var(--s);height:var(--s);border-radius:50%;
+  position:absolute;left:var(--l);top:-2%;width:var(--s);height:var(--s);border-radius:50%;
   background:var(--c);box-shadow:0 0 calc(var(--s)*3) var(--c),0 0 calc(var(--s)*6) rgba(242,170,70,.25);filter:blur(var(--b));opacity:0;
-  animation:vq-dust-rise var(--d) linear var(--dl) infinite,vq-dust-sway var(--sw) ease-in-out var(--sdl) infinite alternate;
+  animation:vq-dust-fall var(--d) linear var(--dl) infinite,vq-dust-sway var(--sw) ease-in-out var(--sdl) infinite alternate;
 }
-@keyframes vq-dust-rise{
-  0%{transform:translateY(20px);opacity:0}
-  12%{opacity:var(--o)}
-  88%{opacity:var(--o)}
-  100%{transform:translateY(calc(-100vh - 80px));opacity:0}
+@keyframes vq-dust-fall{
+  0%{top:-2%;opacity:0}
+  10%{opacity:var(--o)}
+  90%{opacity:var(--o)}
+  100%{top:102%;opacity:0}
 }
 @keyframes vq-dust-sway{
-  from{translate:0 0}
-  to{translate:var(--dx) 0}
+  0%{translate:calc(var(--dx) * -1) -6px}
+  50%{translate:calc(var(--dx) * .15) 8px}
+  100%{translate:var(--dx) -6px}
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -97,7 +98,7 @@ a:focus-visible{outline:2px solid #5eaaf7;outline-offset:3px}
 <body>
 <div style="position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;background:#000;color:var(--ink);font-family:var(--font-text)">
 <div aria-hidden="true" style="position:absolute;inset:-10%;pointer-events:none;opacity:.045;animation:vq-grain .9s steps(4) infinite"><svg width="100%" height="100%"><filter id="n-a"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#n-a)"></rect></svg></div>
-<div class="dust" aria-hidden="true"><i style="--l:2.9%;--s:3px;--d:67s;--dl:-6s;--sw:10s;--sdl:-8s;--dx:-48px;--o:0.51;--b:0px;--c:#f2aa46"></i><i style="--l:7.8%;--s:4px;--d:68s;--dl:-8s;--sw:12s;--sdl:-1s;--dx:10px;--o:0.54;--b:0px;--c:#f2aa46"></i><i style="--l:17.9%;--s:5px;--d:45s;--dl:-36s;--sw:15s;--sdl:-1s;--dx:-32px;--o:0.37;--b:0px;--c:#ffe0a3"></i><i style="--l:23.2%;--s:5px;--d:49s;--dl:-36s;--sw:13s;--sdl:-8s;--dx:44px;--o:0.66;--b:0px;--c:#f2aa46"></i><i style="--l:29.5%;--s:5px;--d:46s;--dl:-36s;--sw:9s;--sdl:-9s;--dx:-34px;--o:0.57;--b:1px;--c:#ffe0a3"></i><i style="--l:36.7%;--s:4px;--d:65s;--dl:-38s;--sw:12s;--sdl:-12s;--dx:-37px;--o:0.66;--b:0px;--c:#f2aa46"></i><i style="--l:43.9%;--s:5px;--d:73s;--dl:-43s;--sw:16s;--sdl:-9s;--dx:17px;--o:0.79;--b:0px;--c:#c2802c"></i><i style="--l:48.0%;--s:4px;--d:51s;--dl:-31s;--sw:15s;--sdl:-1s;--dx:25px;--o:0.38;--b:0.5px;--c:#ffe0a3"></i><i style="--l:57.7%;--s:5px;--d:73s;--dl:-58s;--sw:10s;--sdl:-1s;--dx:60px;--o:0.47;--b:0px;--c:#f2aa46"></i><i style="--l:64.5%;--s:4px;--d:78s;--dl:-57s;--sw:13s;--sdl:-11s;--dx:-11px;--o:0.75;--b:0.5px;--c:#f2aa46"></i><i style="--l:72.4%;--s:4px;--d:52s;--dl:-39s;--sw:10s;--sdl:-7s;--dx:-53px;--o:0.45;--b:0.5px;--c:#f2aa46"></i><i style="--l:77.7%;--s:4px;--d:67s;--dl:-63s;--sw:10s;--sdl:-2s;--dx:-3px;--o:0.53;--b:0.5px;--c:#f2aa46"></i><i style="--l:84.8%;--s:5px;--d:59s;--dl:-45s;--sw:15s;--sdl:-11s;--dx:27px;--o:0.75;--b:0px;--c:#f2aa46"></i><i style="--l:86.9%;--s:3px;--d:56s;--dl:-42s;--sw:12s;--sdl:0s;--dx:2px;--o:0.72;--b:0px;--c:#ffe0a3"></i></div>
+<div class="dust" aria-hidden="true"><i style="--l:2.9%;--s:3px;--d:67s;--dl:-6s;--sw:15s;--sdl:-5s;--dx:68px;--o:0.51;--b:0px;--c:#f2aa46"></i><i style="--l:7.8%;--s:4px;--d:68s;--dl:-8s;--sw:9s;--sdl:-7s;--dx:95px;--o:0.54;--b:0px;--c:#f2aa46"></i><i style="--l:17.9%;--s:5px;--d:45s;--dl:-36s;--sw:12s;--sdl:-2s;--dx:75px;--o:0.37;--b:0px;--c:#ffe0a3"></i><i style="--l:23.2%;--s:5px;--d:49s;--dl:-36s;--sw:9s;--sdl:-8s;--dx:94px;--o:0.66;--b:0px;--c:#f2aa46"></i><i style="--l:29.5%;--s:5px;--d:46s;--dl:-36s;--sw:8s;--sdl:-6s;--dx:99px;--o:0.57;--b:1px;--c:#ffe0a3"></i><i style="--l:36.7%;--s:4px;--d:65s;--dl:-38s;--sw:15s;--sdl:-5s;--dx:89px;--o:0.66;--b:0px;--c:#f2aa46"></i><i style="--l:43.9%;--s:5px;--d:73s;--dl:-43s;--sw:8s;--sdl:-8s;--dx:69px;--o:0.79;--b:0px;--c:#c2802c"></i><i style="--l:48.0%;--s:4px;--d:51s;--dl:-31s;--sw:9s;--sdl:-0s;--dx:68px;--o:0.38;--b:0.5px;--c:#ffe0a3"></i><i style="--l:57.7%;--s:5px;--d:73s;--dl:-58s;--sw:8s;--sdl:-3s;--dx:72px;--o:0.47;--b:0px;--c:#f2aa46"></i><i style="--l:64.5%;--s:4px;--d:78s;--dl:-57s;--sw:11s;--sdl:-9s;--dx:94px;--o:0.75;--b:0.5px;--c:#f2aa46"></i><i style="--l:72.4%;--s:4px;--d:52s;--dl:-39s;--sw:8s;--sdl:-7s;--dx:77px;--o:0.45;--b:0.5px;--c:#f2aa46"></i><i style="--l:77.7%;--s:4px;--d:67s;--dl:-63s;--sw:13s;--sdl:-7s;--dx:52px;--o:0.53;--b:0.5px;--c:#f2aa46"></i><i style="--l:84.8%;--s:5px;--d:59s;--dl:-45s;--sw:11s;--sdl:-8s;--dx:51px;--o:0.75;--b:0px;--c:#f2aa46"></i><i style="--l:86.9%;--s:3px;--d:56s;--dl:-42s;--sw:12s;--sdl:0s;--dx:91px;--o:0.72;--b:0px;--c:#ffe0a3"></i><i style="--l:10.5%;--s:4px;--d:47s;--dl:-1s;--sw:12s;--sdl:-6s;--dx:64px;--o:0.59;--b:0px;--c:#f2aa46"></i><i style="--l:13.2%;--s:3px;--d:56s;--dl:-39s;--sw:15s;--sdl:0s;--dx:46px;--o:0.39;--b:1px;--c:#c2802c"></i><i style="--l:18.3%;--s:4px;--d:64s;--dl:-7s;--sw:11s;--sdl:0s;--dx:77px;--o:0.52;--b:0px;--c:#f2aa46"></i><i style="--l:30.5%;--s:4px;--d:78s;--dl:-47s;--sw:12s;--sdl:-10s;--dx:60px;--o:0.61;--b:1px;--c:#f2aa46"></i><i style="--l:35.6%;--s:5px;--d:70s;--dl:-20s;--sw:10s;--sdl:-2s;--dx:74px;--o:0.5;--b:0px;--c:#f2aa46"></i><i style="--l:38.4%;--s:4px;--d:44s;--dl:-36s;--sw:12s;--sdl:-9s;--dx:57px;--o:0.72;--b:0.5px;--c:#f2aa46"></i><i style="--l:46.6%;--s:4px;--d:76s;--dl:-39s;--sw:15s;--sdl:-6s;--dx:56px;--o:0.42;--b:0px;--c:#c2802c"></i><i style="--l:52.4%;--s:5px;--d:51s;--dl:-47s;--sw:9s;--sdl:-6s;--dx:50px;--o:0.55;--b:0px;--c:#f2aa46"></i><i style="--l:61.4%;--s:4px;--d:43s;--dl:-10s;--sw:11s;--sdl:-10s;--dx:40px;--o:0.79;--b:0px;--c:#c2802c"></i><i style="--l:68.6%;--s:4px;--d:43s;--dl:-24s;--sw:15s;--sdl:-6s;--dx:42px;--o:0.38;--b:1px;--c:#f2aa46"></i><i style="--l:75.2%;--s:4px;--d:60s;--dl:-13s;--sw:9s;--sdl:-1s;--dx:75px;--o:0.59;--b:0px;--c:#f2aa46"></i><i style="--l:78.8%;--s:4px;--d:52s;--dl:0s;--sw:15s;--sdl:-10s;--dx:82px;--o:0.75;--b:0px;--c:#c2802c"></i><i style="--l:84.3%;--s:3px;--d:76s;--dl:-37s;--sw:14s;--sdl:-6s;--dx:59px;--o:0.7;--b:0px;--c:#ffe0a3"></i><i style="--l:91.1%;--s:3px;--d:63s;--dl:-55s;--sw:11s;--sdl:-2s;--dx:100px;--o:0.65;--b:0.5px;--c:#f2aa46"></i></div>
 <header style="position:relative;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:24px 48px">
 <img src="assets/vinqs-symbol-gold.svg" alt="Vinqs symbol" style="display:block;height:36px;width:auto">
 <a class="lnk" href="mailto:support@vinqs.com" style="display:inline-flex;align-items:center;gap:10px;min-height:44px;font:500 14px/1 var(--font-display);color:var(--ink)"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2"></rect><path d="M3 6.5l7 5 7-5"></path></svg><span>support@vinqs.com</span></a>
